@@ -1,10 +1,15 @@
+# Import socket module
 import socket
-
-TCP_IP = '94.142.241.111'
-TCP_PORT = 23
-BUFFER_SIZE = 2048
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((TCP_IP, TCP_PORT))
-data = s.recv(BUFFER_SIZE)
+import sys
+import os
+# Create a socket object
+s = socket.socket()
+# Define the port on which you want to connect
+port = 23
+# connect to the server or remote host
+s.connect(('94.142.241.111', port))
+# receive data from the server
+while (True):
+    data = s.recv(8096)
+    print(data.decode())
 s.close()
-print ("received data:", data)
